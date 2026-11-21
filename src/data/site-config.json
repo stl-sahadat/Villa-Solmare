@@ -1,0 +1,288 @@
+{
+  "site": {
+    "name": "Villa Solmare",
+    "title": "Villa Solmare — Clifftop Coastal Sanctuary | Bay of Bengal, Bangladesh",
+    "description": "An ultra-luxury coastal stone sanctuary with panoramic Bay of Bengal views, private terrace, four bedroom suites and tropical garden, 300 metres from Inani Beach. Sleeps 8.",
+    "url": "https://villa-solmare.example.com",
+    "lang": "en"
+  },
+  "arrival": {
+    "eyebrow": "স্বাগতম — Welcome",
+    "tagline": "A stone sanctuary above the sea, on the scenic southern coast of Bangladesh.",
+    "hint": "Scroll to arrive"
+  },
+  "booking": {
+    "priceFrom": 85000,
+    "currency": "BDT",
+    "maxGuests": 8,
+    "minNights": 2,
+    "checkIn": "15:00",
+    "checkOut": "11:00"
+  },
+  "owner": {
+    "name": "Md Sahadat Hossain",
+    "phone": "+880 19XX-XXXXXX",
+    "whatsapp": "8801900000000",
+    "email": "sahadat.xxxx@gmail.com",
+    "instagram": "stlsahadat",
+    "street": "Barura",
+    "city": "Comilla",
+    "country": "Bangladesh"
+  },
+  "intro": {
+    "heading": "Two centuries of architectural heritage, restored for quiet luxury by the sea.",
+    "text": "Villa Solmare stands on the coastal clifftops overlooking the Bay of Bengal. Today it has four luxury bedroom suites, three artisanal bathrooms and an expansive terrace facing west, so every evening ends with the golden sun setting into the ocean.",
+    "facts": [
+      {
+        "value": 8,
+        "label": "Guests"
+      },
+      {
+        "value": 4,
+        "label": "Bedrooms"
+      },
+      {
+        "value": 3,
+        "label": "Bathrooms"
+      },
+      {
+        "value": 260,
+        "label": "Square metres"
+      },
+      {
+        "value": 300,
+        "label": "Metres to Inani Beach"
+      }
+    ]
+  },
+  "walk": {
+    "rooms": [
+      {
+        "from": 0,
+        "to": 0.3,
+        "name": "The living room",
+        "italian": "লিভিং লাউঞ্জ",
+        "text": "Linen sofas, hand-carved stone hearth and timber beams overhead. An arch leads straight into the kitchen."
+      },
+      {
+        "from": 0.3,
+        "to": 0.66,
+        "name": "The kitchen",
+        "italian": "রসুইঘর",
+        "text": "Artisanal hand-painted tiles, brass cookware and a long solid wood table, with a bowl of fresh citrus from the coastal garden."
+      },
+      {
+        "from": 0.66,
+        "to": 1.01,
+        "name": "The main bedroom",
+        "italian": "মাস্টার স্যুট",
+        "text": "A linen canopy bed and French windows opening onto the terrace overlooking the Bay of Bengal. It is one of four bedrooms."
+      }
+    ]
+  },
+  "amenities": [
+    {
+      "group": "Inside",
+      "photo": "soggiorno",
+      "items": [
+        {
+          "icon": "wifi",
+          "label": "High-speed Fibre Wi-Fi"
+        },
+        {
+          "icon": "snow",
+          "label": "Air conditioning in every suite"
+        },
+        {
+          "icon": "kitchen",
+          "label": "Full gourmet kitchen with modern appliances"
+        },
+        {
+          "icon": "washer",
+          "label": "Smart washing machine & dryer"
+        },
+        {
+          "icon": "linen",
+          "label": "Luxury Egyptian cotton linen and bath towels"
+        }
+      ]
+    },
+    {
+      "group": "Outside",
+      "photo": "ingresso",
+      "items": [
+        {
+          "icon": "sun",
+          "label": "Sea-view terrace facing west over Bay of Bengal"
+        },
+        {
+          "icon": "tree",
+          "label": "Tropical coastal palm & flower garden"
+        },
+        {
+          "icon": "shower",
+          "label": "Outdoor natural stone shower"
+        },
+        {
+          "icon": "grill",
+          "label": "Outdoor barbecue setup"
+        },
+        {
+          "icon": "car",
+          "label": "Private secure parking for 4 vehicles"
+        }
+      ]
+    },
+    {
+      "group": "On request",
+      "photo": "cucina",
+      "items": [
+        {
+          "icon": "chef",
+          "label": "Private culinary chef (Bengali coastal & continental)"
+        },
+        {
+          "icon": "plane",
+          "label": "Airport chauffeur transfer (Cox's Bazar / Chittagong)"
+        },
+        {
+          "icon": "boat",
+          "label": "Private sea boat trips & deep sea cruising"
+        },
+        {
+          "icon": "cot",
+          "label": "Baby cot and high chair"
+        }
+      ]
+    }
+  ],
+  "area": {
+    "heading": "Around the house",
+    "text": "The villa stands at the end of a private lane above Inani Beach, framed by lush coastal greenery and minutes from the ocean.",
+    "places": [
+      {
+        "name": "Inani Coral Beach",
+        "minutes": 4,
+        "by": "on foot"
+      },
+      {
+        "name": "Marine Drive Jetty",
+        "minutes": 8,
+        "by": "by car"
+      },
+      {
+        "name": "Himchari Eco Park & Trails",
+        "minutes": 12,
+        "by": "by car"
+      },
+      {
+        "name": "Cox's Bazar Airport",
+        "minutes": 35,
+        "by": "by car"
+      }
+    ]
+  },
+  "guests": {
+    "heading": "What our guests remember.",
+    "rating": "4.98",
+    "count": "142 reviews",
+    "source": "from stays booked direct and through luxury travel partners",
+    "items": [
+      {
+        "author": "Tanvir Ahmed",
+        "from": "Dhaka",
+        "when": "November 2026",
+        "nights": 7,
+        "quote": "We had dinner on the terrace every night watching the sunset into the Bay of Bengal. The children didn't want to leave."
+      },
+      {
+        "author": "Farhana Rahman",
+        "from": "Gulshan, Dhaka",
+        "when": "October 2026",
+        "nights": 4,
+        "quote": "The private chef was the best present for our anniversary. The architectural detailing is world-class."
+      },
+      {
+        "author": "Zubair & Nabila",
+        "from": "Chittagong",
+        "when": "September 2026",
+        "nights": 3,
+        "quote": "The morning ocean breeze and the golden light in the kitchen are worth the trip on their own. Unmatched tranquility."
+      },
+      {
+        "author": "Rezaul Karim",
+        "from": "Comilla",
+        "when": "August 2026",
+        "nights": 5,
+        "quote": "Even more beautiful than the photos. Quiet, cool in the afternoon, and cared for in every single detail."
+      },
+      {
+        "author": "David & Sarah Campbell",
+        "from": "London",
+        "when": "July 2026",
+        "nights": 6,
+        "quote": "Villa Solmare on the southern coast was the highlight of our visit to South Asia. Exceptional warmth and hospitality."
+      },
+      {
+        "author": "Nusrat Jahan",
+        "from": "Sylhet",
+        "when": "May 2026",
+        "nights": 5,
+        "quote": "Four minutes to the beach and not a sound at night except the gentle waves. Exactly what our family needed."
+      },
+      {
+        "author": "Mahmudul Hasan",
+        "from": "Banani, Dhaka",
+        "when": "April 2026",
+        "nights": 7,
+        "quote": "Three families, eight people, and still everyone found a quiet corner. Sunset from the terrace was pure magic."
+      },
+      {
+        "author": "Ayesha Siddiqa",
+        "from": "Uttara, Dhaka",
+        "when": "March 2026",
+        "nights": 4,
+        "quote": "The private boat trip they arranged along Marine Drive was phenomenal. Impeccable host and spotless house."
+      },
+      {
+        "author": "Kazi Tariq",
+        "from": "Dhanmondi, Dhaka",
+        "when": "February 2026",
+        "nights": 6,
+        "quote": "Clear instructions, a spotless sanctuary and a host who answered within minutes. Best luxury experience in Bangladesh."
+      },
+      {
+        "author": "Marcus Weber",
+        "from": "Frankfurt",
+        "when": "January 2026",
+        "nights": 8,
+        "quote": "Sunset from the terrace, every single evening. We stopped making plans after the second day. Truly sublime."
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Before you ask.",
+    "items": [
+      {
+        "q": "What are the check-in and checkout times?",
+        "a": "Check-in is from 3:00 PM and checkout by 11:00 AM. If the booking calendar allows, we are happy to adjust to your travel schedule."
+      },
+      {
+        "q": "Is there a minimum stay?",
+        "a": "Two nights on weekdays, three nights on weekends and peak holiday seasons."
+      },
+      {
+        "q": "What is the currency and are there hidden taxes?",
+        "a": "All prices are in Bangladeshi Taka (BDT ৳). Government taxes and hospitality services are confirmed clearly upfront with zero hidden charges."
+      },
+      {
+        "q": "Are pets allowed?",
+        "a": "Well-behaved family pets are welcome upon prior confirmation."
+      },
+      {
+        "q": "How do we get there?",
+        "a": "A car via scenic Marine Drive is easiest, and there is private secure parking for 4 cars. We can also arrange private luxury chauffeur transfer from Cox's Bazar Airport or Chittagong."
+      }
+    ]
+  }
+}
