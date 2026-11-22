@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cf": "node scripts/build_cloudflare.js",
+    "deploy:cf": "node scripts/build_cloudflare.js && npx wrangler pages deploy pages-dist --project-name villa-solmare --commit-dirty=true",
     "start": "next start",
     "lint": "next lint"
   },

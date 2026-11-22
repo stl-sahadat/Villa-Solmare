@@ -28,6 +28,10 @@ yarn-error.log*
 # Vercel
 .vercel
 
+# Cloudflare Pages build artifacts
+.wrangler
+/pages-dist
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
