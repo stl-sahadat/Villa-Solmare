@@ -280,3 +280,5 @@ export function Walk({
     </>
   );
 }
+
+export default Walk;

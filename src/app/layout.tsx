@@ -86,7 +86,7 @@ const jsonLd = {
     {
       "@type": "FAQPage",
       "@id": `${villa.site.url}/#faq`,
-      mainEntity: villa.faq.items.map((item: any) => ({
+      mainEntity: villa.faq.items.map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: {

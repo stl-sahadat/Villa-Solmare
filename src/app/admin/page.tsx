@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import type { AdminTab } from "@/types";
 
 interface SiteConfig {
   site: {
@@ -79,9 +80,7 @@ export default function AdminPage() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const [config, setConfig] = useState<SiteConfig | null>(null);
-  const [activeTab, setActiveTab] = useState<
-    "general" | "owner" | "intro" | "walk" | "amenities" | "guests" | "faq"
-  >("general");
+  const [activeTab, setActiveTab] = useState<AdminTab>("general");
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -166,15 +165,15 @@ export default function AdminPage() {
   };
 
   // Helper updates
-  const updateField = (path: string[], value: any) => {
+  const updateField = (path: string[], value: unknown) => {
     if (!config) return;
-    const next = JSON.parse(JSON.stringify(config));
+    const next = JSON.parse(JSON.stringify(config)) as Record<string, any>;
     let cur = next;
     for (let i = 0; i < path.length - 1; i++) {
       cur = cur[path[i]];
     }
     cur[path[path.length - 1]] = value;
-    setConfig(next);
+    setConfig(next as unknown as SiteConfig);
   };
 
   if (isAuthenticated === null) {
@@ -320,7 +319,7 @@ export default function AdminPage() {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as AdminTab)}
               className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.id
                   ? "bg-primary text-primary-foreground shadow-sm"

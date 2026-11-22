@@ -461,3 +461,5 @@ export function Book({
     </section>
   );
 }
+
+export default Book;

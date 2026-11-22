@@ -77,7 +77,7 @@ export function Faq({
                   className="grid transition-[grid-template-rows] duration-700 [transition-timing-function:var(--ease-door)]"
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
-                  <div className="overflow-hidden" {...(!isOpen ? ({ inert: "" } as any) : {})}>
+                  <div className="overflow-hidden" inert={!isOpen ? true : undefined}>
                     <p className="max-w-[60ch] pb-6 text-muted-foreground">{item.a}</p>
                   </div>
                 </div>
@@ -89,3 +89,5 @@ export function Faq({
     </section>
   );
 }
+
+export default Faq;

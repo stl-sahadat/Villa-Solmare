@@ -1,12 +1,24 @@
 import { NextResponse } from "next/server";
 import { villa } from "@/config/solmare.config";
+import type { BookingSubmissionResponse } from "@/types";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function POST(request: Request) {
+interface RawBookingPayload {
+  arrival?: string;
+  departure?: string;
+  guests?: number | string;
+  name?: string;
+  email?: string;
+  message?: string;
+  checkIn?: string;
+  checkOut?: string;
+}
+
+export async function POST(request: Request): Promise<NextResponse<BookingSubmissionResponse>> {
   try {
-    const body = await request.json();
-    const { arrival, departure, guests, name, email, message, checkIn, checkOut, notes } = body;
+    const body = (await request.json()) as RawBookingPayload;
+    const { arrival, departure, guests, name, email, checkIn, checkOut } = body;
 
     const startDateStr = arrival || checkIn;
     const endDateStr = departure || checkOut;
@@ -16,14 +28,22 @@ export async function POST(request: Request) {
 
     if (!startDateStr || !endDateStr || !guestName || !guestEmail) {
       return NextResponse.json(
-        { error: "Please fill in all required fields (dates, name, and email)." },
+        {
+          success: false,
+          message: "Validation failed",
+          error: "Please fill in all required fields (dates, name, and email).",
+        },
         { status: 400 }
       );
     }
 
     if (typeof guestEmail !== "string" || !EMAIL_REGEX.test(guestEmail.trim())) {
       return NextResponse.json(
-        { error: "Please provide a valid email address (e.g. name@domain.com)." },
+        {
+          success: false,
+          message: "Validation failed",
+          error: "Please provide a valid email address (e.g. name@domain.com).",
+        },
         { status: 400 }
       );
     }
@@ -32,6 +52,8 @@ export async function POST(request: Request) {
     if (isNaN(parsedGuests) || parsedGuests < 1 || parsedGuests > villa.booking.maxGuests) {
       return NextResponse.json(
         {
+          success: false,
+          message: "Validation failed",
           error: `${villa.site.name} accommodates between 1 and ${villa.booking.maxGuests} guests.`,
         },
         { status: 400 }
@@ -43,7 +65,11 @@ export async function POST(request: Request) {
 
     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
       return NextResponse.json(
-        { error: "Invalid check-in or checkout date format." },
+        {
+          success: false,
+          message: "Validation failed",
+          error: "Invalid check-in or checkout date format.",
+        },
         { status: 400 }
       );
     }
@@ -54,7 +80,11 @@ export async function POST(request: Request) {
 
     if (startMidnight < todayMidnight) {
       return NextResponse.json(
-        { error: "Check-in date cannot be in the past." },
+        {
+          success: false,
+          message: "Validation failed",
+          error: "Check-in date cannot be in the past.",
+        },
         { status: 400 }
       );
     }
@@ -64,7 +94,11 @@ export async function POST(request: Request) {
 
     if (nights < 1) {
       return NextResponse.json(
-        { error: "Checkout date must be after check-in date." },
+        {
+          success: false,
+          message: "Validation failed",
+          error: "Checkout date must be after check-in date.",
+        },
         { status: 400 }
       );
     }
@@ -93,6 +127,13 @@ export async function POST(request: Request) {
       },
     });
   } catch {
-    return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Invalid payload",
+        error: "Invalid request payload format.",
+      },
+      { status: 400 }
+    );
   }
 }

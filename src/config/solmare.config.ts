@@ -1,7 +1,15 @@
 // Villa Solmare Configuration (1:1 Architectural Schema & Dynamic Sync)
 import siteConfig from "@/data/site-config.json";
+import type {
+  VillaConfig,
+  NavigationLink,
+  VillaAmenityItem,
+  VillaAreaPlace,
+  VillaGuestReviewItem,
+  VillaFaqItem,
+} from "@/types";
 
-export const villa = {
+export const villa: VillaConfig = {
   site: {
     url: siteConfig.site.url || "https://villa-solmare.example.com",
     name: siteConfig.site.name || "Villa Solmare",
@@ -107,7 +115,7 @@ export const villa = {
       { from: 0.66, to: 1.01, name: "The main bedroom", italian: "মাস্টার স্যুট", text: "A linen canopy bed and French windows opening onto the terrace overlooking the Bay of Bengal. It is one of four bedrooms." },
     ],
     showAll: "Show all photos",
-    photosCount: (e: number) => `${e} photos`,
+    photosCount: (count: number): string => `${count} photos`,
   },
   photos: [
     { name: "ingresso", alt: "The arched front door, framed by bougainvillea, with the sea behind" },
@@ -125,16 +133,11 @@ export const villa = {
     index: "03",
     label: "What's here",
     heading: "Everything you need, nothing you don't.",
-    amenities: siteConfig.amenities,
+    amenities: siteConfig.amenities as readonly { group: string; photo: string; items: readonly VillaAmenityItem[] }[],
     area: {
       heading: siteConfig.area.heading || "Around the house",
       text: siteConfig.area.text || "The villa stands at the end of a private lane above Inani Beach, framed by lush coastal greenery and minutes from the ocean.",
-      places: siteConfig.area.places || [
-        { name: "Inani Coral Beach", minutes: 4, by: "on foot" },
-        { name: "Marine Drive Jetty", minutes: 8, by: "by car" },
-        { name: "Himchari Eco Park & Trails", minutes: 12, by: "by car" },
-        { name: "Cox's Bazar Airport", minutes: 35, by: "by car" },
-      ],
+      places: siteConfig.area.places as readonly VillaAreaPlace[],
       minutes: "min",
       openMaps: "Open in Google Maps",
     },
@@ -147,8 +150,8 @@ export const villa = {
     rating: siteConfig.guests.rating || "4.98",
     count: siteConfig.guests.count || "142 reviews",
     source: siteConfig.guests.source || "from stays booked direct and through luxury travel partners",
-    nights: (e: any) => `${e} nights`,
-    items: siteConfig.guests.items || [],
+    nights: (count: number): string => `${count} nights`,
+    items: siteConfig.guests.items as readonly VillaGuestReviewItem[],
   },
   book: {
     id: "stay",
@@ -169,12 +172,12 @@ export const villa = {
       consent: "I agree to my details being used to answer this request.",
       privacy: "Privacy notice",
     },
-    guestsOption: (e: any) => `${e} ${1 === e ? "guest" : "guests"}`,
-    nights: (e: any) => `${e} ${1 === e ? "night" : "nights"}`,
-    estimateLabel: (e: any, t: any) => `${t} × ${e}`,
+    guestsOption: (count: number): string => `${count} ${count === 1 ? "guest" : "guests"}`,
+    nights: (count: number): string => `${count} ${count === 1 ? "night" : "nights"}`,
+    estimateLabel: (nightsText: string, rateText: string): string => `${rateText} × ${nightsText}`,
     estimateTotal: "Estimated total",
     estimateNote: "Cleaning, breakfast and hospitality services are confirmed in our reply.",
-    minNightsNote: (e: any) => `The minimum stay is ${e} nights.`,
+    minNightsNote: (min: number): string => `The minimum stay is ${min} nights.`,
     submit: "Request to book",
     noCharge: "You won't be charged yet.",
     sending: "Sending…",
@@ -190,7 +193,7 @@ export const villa = {
     index: "06",
     label: "Questions",
     heading: siteConfig.faq.heading || "Before you ask.",
-    items: siteConfig.faq.items || [],
+    items: siteConfig.faq.items as readonly VillaFaqItem[],
   },
   ui: {
     skip: "Skip to content",
@@ -205,7 +208,7 @@ export const villa = {
     night: "Night",
     theme: "Switch between day and night",
     sections: "Sections",
-    minStay: (e: number) => `Minimum ${e} nights`,
+    minStay: (nights: number): string => `Minimum ${nights} nights`,
     pause: "Pause the reviews",
     play: "Play the reviews",
   },
@@ -232,53 +235,13 @@ export const villa = {
   },
 };
 
-export const navigation = [
-  { href: `#${villa.intro.id}`, label: villa.intro.label, still: "ingresso" },
-  { href: `#${villa.walk.id}`, label: villa.walk.label, still: "soggiorno" },
-  { href: `#${villa.details.id}`, label: villa.details.label, still: "cucina" },
-  { href: `#${villa.guests.id}`, label: villa.guests.label, still: "camera" },
-  { href: `#${villa.book.id}`, label: villa.book.label, still: "tramonto" },
+export const navigation: readonly NavigationLink[] = [
+  { href: "/the-house", label: villa.intro.label, still: "ingresso", slug: "the-house" },
+  { href: "/inside", label: villa.walk.label, still: "soggiorno", slug: "inside" },
+  { href: "/amenities", label: villa.details.label, still: "cucina", slug: "amenities" },
+  { href: "/guests", label: villa.guests.label, still: "camera", slug: "guests" },
+  { href: "/stay", label: villa.book.label, still: "tramonto", slug: "stay" },
 ];
-
-export interface VillaAmenity {
-  icon: string;
-  label: string;
-  description?: string;
-}
-
-export interface TravelDestination {
-  id: string;
-  destination: string;
-  distanceKm: string;
-  minutes: number;
-  travelMethod: string;
-}
-
-export interface GuestReview {
-  id: string;
-  author: string;
-  location: string;
-  date: string;
-  rating: number;
-  content: string;
-  verified: boolean;
-  stayDuration: string;
-}
-
-export interface FaqItem {
-  id: string;
-  question: string;
-  answer: string;
-}
-
-export interface GalleryPhoto {
-  id: string;
-  src: string;
-  alt: string;
-  title: string;
-  category: string;
-  aspectRatio: string;
-}
 
 export const SOLMARE_CONFIG = {
   ...villa,
@@ -307,7 +270,7 @@ export const SOLMARE_CONFIG = {
     headline: villa.intro.heading,
     paragraphs: [villa.intro.text],
   },
-  rooms: villa.walk.rooms.map((r: any, idx: number) => ({
+  rooms: villa.walk.rooms.map((r, idx: number) => ({
     id: `room-${idx}`,
     name: r.name,
     italian: r.italian,
@@ -316,7 +279,7 @@ export const SOLMARE_CONFIG = {
     from: r.from,
     to: r.to,
   })),
-  gallery: villa.photos.map((p: any, idx: number) => ({
+  gallery: villa.photos.map((p, idx: number) => ({
     id: `photo-${idx}`,
     src: `/media/${p.name}-1600.webp`,
     alt: p.alt,
@@ -325,11 +288,11 @@ export const SOLMARE_CONFIG = {
     aspectRatio: idx % 5 === 0 ? "wide" : "portrait",
   })),
   amenities: {
-    inside: villa.details.amenities[0].items.map((i: any) => ({ ...i, description: i.label })),
-    outside: villa.details.amenities[1].items.map((i: any) => ({ ...i, description: i.label })),
-    onRequest: villa.details.amenities[2].items.map((i: any) => ({ ...i, description: i.label })),
+    inside: villa.details.amenities[0].items.map((i) => ({ ...i, description: i.label })),
+    outside: villa.details.amenities[1].items.map((i) => ({ ...i, description: i.label })),
+    onRequest: villa.details.amenities[2].items.map((i) => ({ ...i, description: i.label })),
   },
-  travel: villa.details.area.places.map((p: any, idx: number) => ({
+  travel: villa.details.area.places.map((p, idx: number) => ({
     id: `dest-${idx}`,
     destination: p.name,
     distanceKm: (p.minutes * 0.8).toFixed(1),
@@ -338,8 +301,8 @@ export const SOLMARE_CONFIG = {
   })),
   reviews: {
     overallRating: parseFloat(villa.guests.rating),
-    totalReviews: parseInt(villa.guests.count),
-    laneA: villa.guests.items.slice(0, Math.ceil(villa.guests.items.length / 2)).map((r: any, i: number) => ({
+    totalReviews: parseInt(villa.guests.count, 10),
+    laneA: villa.guests.items.slice(0, Math.ceil(villa.guests.items.length / 2)).map((r, i: number) => ({
       id: `rev-a-${i}`,
       author: r.author,
       location: r.from,
@@ -349,7 +312,7 @@ export const SOLMARE_CONFIG = {
       verified: true,
       stayDuration: `${r.nights} nights`,
     })),
-    laneB: villa.guests.items.slice(Math.ceil(villa.guests.items.length / 2)).map((r: any, i: number) => ({
+    laneB: villa.guests.items.slice(Math.ceil(villa.guests.items.length / 2)).map((r, i: number) => ({
       id: `rev-b-${i}`,
       author: r.author,
       location: r.from,
@@ -360,7 +323,7 @@ export const SOLMARE_CONFIG = {
       stayDuration: `${r.nights} nights`,
     })),
   },
-  faqs: villa.faq.items.map((f: any, idx: number) => ({
+  faqs: villa.faq.items.map((f, idx: number) => ({
     id: `faq-${idx}`,
     question: f.q,
     answer: f.a,

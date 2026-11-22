@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-function useInView(ref: React.RefObject<Element>, rootMargin = "0px") {
+function useInView(ref: React.RefObject<Element | null>, rootMargin = "0px") {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {

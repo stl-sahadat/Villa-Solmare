@@ -121,12 +121,12 @@ export function CanvasPlayer({
   const drawCover = useCallback(
     (
       ctx: CanvasRenderingContext2D,
-      img: HTMLImageElement | HTMLCanvasElement,
+      img: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
       cw: number,
       ch: number
     ) => {
-      const imgWidth = "videoWidth" in img ? (img as any).videoWidth : img.width;
-      const imgHeight = "videoHeight" in img ? (img as any).videoHeight : img.height;
+      const imgWidth = "videoWidth" in img ? (img as HTMLVideoElement).videoWidth : img.width;
+      const imgHeight = "videoHeight" in img ? (img as HTMLVideoElement).videoHeight : img.height;
       if (!imgWidth || !imgHeight) return;
 
       const imgRatio = imgWidth / imgHeight;

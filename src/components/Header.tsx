@@ -390,7 +390,7 @@ export function Header({
       {/* Floating Bottom Booking Bar for Mobile */}
       {!isStatic && (
         <div
-          {...(!isBarVisible ? ({ inert: "" } as any) : {})}
+          inert={!isBarVisible ? true : undefined}
           className={`fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-30 rounded-full border border-border/70 bg-background/85 py-2 pr-2 pl-5 text-foreground shadow-[0_18px_40px_-16px_color-mix(in_srgb,var(--color-screen)_55%,transparent)] backdrop-blur-xl backdrop-saturate-150 transition-[transform,opacity] duration-500 [transition-timing-function:var(--ease-spring)] md:hidden ${
             isBarVisible ? "translate-y-0 opacity-100" : "translate-y-[150%] opacity-0"
           }`}
@@ -418,3 +418,5 @@ export function Header({
     </>
   );
 }
+
+export default Header;

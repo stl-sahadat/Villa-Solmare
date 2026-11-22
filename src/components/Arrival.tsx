@@ -88,3 +88,5 @@ export function Arrival({
     </CanvasSequence>
   );
 }
+
+export default Arrival;

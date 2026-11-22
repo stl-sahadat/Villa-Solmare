@@ -12,18 +12,24 @@ const VALID_SECTIONS = [
   "questions",
   "faq",
   "house",
-];
+] as const;
 
-export function generateStaticParams() {
+export function generateStaticParams(): { section: string }[] {
   return VALID_SECTIONS.map((section) => ({ section }));
 }
 
-export default function SectionPage({ params }: { params: { section: string } }) {
-  if (!VALID_SECTIONS.includes(params.section)) {
+interface SectionPageProps {
+  params: Promise<{ section: string }>;
+}
+
+export default async function SectionPage({ params }: SectionPageProps) {
+  const { section } = await params;
+
+  if (!VALID_SECTIONS.includes(section as (typeof VALID_SECTIONS)[number])) {
     notFound();
   }
 
-  let targetId = params.section;
+  let targetId = section;
   if (targetId === "faq") targetId = "questions";
   if (targetId === "house") targetId = "the-house";
 

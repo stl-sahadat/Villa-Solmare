@@ -76,3 +76,5 @@ export function House({
     </section>
   );
 }
+
+export default House;

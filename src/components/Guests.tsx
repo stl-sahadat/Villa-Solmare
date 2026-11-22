@@ -175,3 +175,5 @@ export function Guests({
     </section>
   );
 }
+
+export default Guests;

@@ -125,3 +125,5 @@ export function Details({
     </section>
   );
 }
+
+export default Details;

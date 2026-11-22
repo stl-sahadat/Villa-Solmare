@@ -26,11 +26,16 @@ export function useReducedMotion() {
   return useMediaQuery("(prefers-reduced-motion: reduce)");
 }
 
+interface NetworkConnection {
+  saveData?: boolean;
+  effectiveType?: string;
+}
+
 export function useSaveData() {
   const [saveData, setSaveData] = useState(false);
   useEffect(() => {
-    const conn = (navigator as any).connection;
-    setSaveData(!!conn?.saveData);
+    const nav = navigator as Navigator & { connection?: NetworkConnection };
+    setSaveData(!!nav.connection?.saveData);
   }, []);
   return saveData;
 }
@@ -56,8 +61,8 @@ export interface SequenceConfig {
   dir: string;
   fps: number;
   frames: number;
-  formats: string[];
-  desktop: { dir: string; width: number; height: number }[];
+  formats: readonly string[] | string[];
+  desktop: readonly { dir: string; width: number; height: number }[];
   mobile: { dir: string; width: number; height: number };
 }
 
@@ -75,7 +80,7 @@ interface CanvasSequenceProps {
   sequence: SequenceConfig;
   alt: string;
   screens?: number;
-  steps?: StepRange[];
+  steps?: readonly StepRange[] | StepRange[];
   fadeOut?: boolean;
   priority?: boolean;
   static?: boolean;
