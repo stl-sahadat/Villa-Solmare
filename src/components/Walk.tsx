@@ -7,6 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icons";
 import { Picture } from "@/components/ui/Picture";
 import { villa } from "@/config/solmare.config";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface GalleryDialogProps {
   open: boolean;
@@ -139,20 +140,37 @@ export function Walk({
   loadingLabel = villa.ui.loading,
   static: isStatic,
 }: WalkProps) {
+  const { lang, t } = useLanguage();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const padding = "px-5 sm:px-8 md:px-12";
+
+  const displayLabel = label === villa.walk.label ? t.walk.label : label;
+  const displayShowAll = showAll === villa.walk.showAll ? t.walk.showAll : showAll;
+  const displayPhotosCount = t.walk.photosCount;
+  const displayCloseLabel = closeLabel === villa.ui.close ? t.ui.close : closeLabel;
+  const displayLoading = loadingLabel === villa.ui.loading ? t.arrival.loading : loadingLabel;
+
+  const displayRooms = rooms === villa.walk.rooms
+    ? t.walk.rooms.map((r, i) => ({
+        name: r.name,
+        italian: r.subtitle,
+        text: r.text,
+        from: villa.walk.rooms[i]?.from ?? 0,
+        to: villa.walk.rooms[i]?.to ?? 1,
+      }))
+    : rooms;
 
   return (
     <>
       <CanvasSequence
         id={id}
-        label={label}
+        label={displayLabel}
         sequence={sequence}
         alt={alt}
         screens={screens}
-        steps={rooms}
+        steps={displayRooms}
         static={isStatic}
-        loadingLabel={loadingLabel}
+        loadingLabel={displayLoading}
       >
         {({ step }) => {
           const activeIndex = isStatic ? 0 : Math.max(step, 0);
@@ -168,9 +186,9 @@ export function Walk({
                 className={`absolute top-[calc(5.25rem+env(safe-area-inset-top))] left-0 md:top-28 ${padding}`}
               >
                 <div className="rounded-2xl border border-screen-foreground/15 bg-screen/55 px-4 py-3 text-screen-foreground backdrop-blur-xl sm:w-[26rem]">
-                  <Slate index={index} label={label} />
-                  <ol className="mt-3 grid grid-flow-col gap-2" aria-label={label}>
-                    {rooms.map((room, idx) => (
+                  <Slate index={index} label={displayLabel} />
+                  <ol className="mt-3 grid grid-flow-col gap-2" aria-label={displayLabel}>
+                    {displayRooms.map((room, idx) => (
                       <li key={room.name} className="min-w-0">
                         <span
                           className="block h-[3px] overflow-hidden rounded-full bg-screen-foreground/25"
@@ -210,7 +228,7 @@ export function Walk({
                 <div className="flex items-end justify-between gap-6">
                   {/* Left: Active Room Info Box */}
                   <div className="relative grid w-full max-w-xl">
-                    {rooms.map((room, idx) => {
+                    {displayRooms.map((room, idx) => {
                       const isCurrent = idx === activeIndex;
                       return (
                         <div
@@ -220,7 +238,7 @@ export function Walk({
                         >
                           <Reveal open={isCurrent} static={isStatic} className="rounded-2xl">
                             <div className="rounded-2xl border border-screen-foreground/15 bg-screen/55 p-5 text-screen-foreground backdrop-blur-xl md:p-7">
-                              <p lang="it" className="font-display text-lg italic opacity-90">
+                              <p lang={lang === "bn" ? "bn" : "it"} className="font-display text-lg italic opacity-90">
                                 {room.italian}
                               </p>
                               <h2 className="mt-1 text-[clamp(2.1rem,5vw,3.75rem)] leading-tight">
@@ -244,7 +262,7 @@ export function Walk({
                       className="hidden h-12 shrink-0 items-center gap-2 rounded-full bg-screen-foreground px-5 font-medium text-screen transition-transform duration-500 [transition-timing-function:var(--ease-spring)] hover:scale-[1.03] active:scale-[0.97] md:flex"
                     >
                       <Icon name="grid" className="h-4 w-4" />
-                      {showAll}
+                      {displayShowAll}
                     </button>
                   )}
                 </div>
@@ -258,7 +276,7 @@ export function Walk({
                   className="absolute top-[calc(5.75rem+env(safe-area-inset-top))] right-5 flex h-10 items-center gap-2 rounded-full bg-screen-foreground px-4 text-sm font-medium text-screen transition-transform active:scale-[0.95] md:hidden"
                 >
                   <Icon name="grid" className="h-4 w-4" />
-                  {showAll}
+                  {displayShowAll}
                 </button>
               )}
             </>
@@ -272,9 +290,10 @@ export function Walk({
           open={isGalleryOpen}
           onClose={() => setIsGalleryOpen(false)}
           photos={photos}
-          title={showAll}
+          title={displayShowAll}
+          count={displayPhotosCount}
           siteName={siteName}
-          closeLabel={closeLabel}
+          closeLabel={displayCloseLabel}
         />
       )}
     </>

@@ -7,6 +7,7 @@ import { Slate } from "@/components/ui/Slate";
 import { Reveal } from "@/components/ui/Reveal";
 import { Roll } from "@/components/ui/Roll";
 import { usePortrait, useReducedMotion, useSaveData } from "@/components/ui/CanvasSequence";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface BookProps {
   id?: string;
@@ -31,7 +32,8 @@ export function Book({
   ui = villa.ui,
   static: isStatic,
 }: BookProps) {
-  const fields = copy.fields;
+  const { lang, t } = useLanguage();
+  const fields = t.book.fields;
   const headingId = useId();
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -124,13 +126,13 @@ export function Book({
 
     setErrorMessage("");
     if (nights < 1) {
-      setErrorMessage(copy.errors.dates);
+      setErrorMessage(t.book.errors.dates);
       return;
     }
 
     const emailBody = [
       `${fields.arrival}: ${data.arrival}`,
-      `${fields.departure}: ${data.departure} (${copy.nights(nights)})`,
+      `${fields.departure}: ${data.departure} (${t.book.nights(nights)})`,
       `${fields.guests}: ${data.guests}`,
       `${fields.name}: ${data.name}`,
       `${fields.email}: ${data.email}`,
@@ -259,18 +261,18 @@ export function Book({
 
         {/* Left Column Copy */}
         <div className="text-screen-foreground">
-          <Slate index={copy.index} label={copy.label} />
+          <Slate index={copy.index} label={t.book.label} />
           <Reveal variant="rise" static={isStatic} className="mt-6">
-            <span lang="it" className="font-display text-2xl italic">
-              {copy.eyebrow}
+            <span lang={lang === "bn" ? "bn" : "it"} className="font-display text-2xl italic">
+              {t.book.eyebrow}
             </span>
           </Reveal>
           <Reveal variant="rise" static={isStatic} delay={80} as="h2" className="mt-1">
             <span id={`${headingId}-h`} className="block max-w-[11ch] text-[clamp(3rem,7vw,6.25rem)] leading-[0.95] font-[340]">
-              {copy.heading}
+              {t.book.heading}
             </span>
           </Reveal>
-          <p className="mt-6 max-w-[38ch] text-lg text-screen-foreground/90">{copy.text}</p>
+          <p className="mt-6 max-w-[38ch] text-lg text-screen-foreground/90">{t.book.text}</p>
         </div>
 
         {/* Right Column Booking Card */}
@@ -284,9 +286,9 @@ export function Book({
                     {money(booking.priceFrom, booking.currency)}
                   </span>
                   <span className="inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                    বাংলাদেশ টাকা
+                    {t.book.badge}
                   </span>
-                  <span className="text-muted-foreground text-sm"> / {copy.perNight}</span>
+                  <span className="text-muted-foreground text-sm"> / {t.book.perNight}</span>
                 </div>
               </div>
 
@@ -339,7 +341,7 @@ export function Book({
                   >
                     {Array.from({ length: booking.maxGuests }, (_, i) => i + 1).map((n) => (
                       <option key={n} value={n}>
-                        {copy.guestsOption(n)}
+                        {t.book.guestsOption(n)}
                       </option>
                     ))}
                   </select>
@@ -393,15 +395,15 @@ export function Book({
                 {nights > 0 && (
                   <div className="rounded-xl border border-border bg-background/50 p-4">
                     <div className="flex items-center justify-between text-base">
-                      <span>{copy.estimateLabel(copy.nights(nights), money(booking.priceFrom, booking.currency))}</span>
+                      <span>{t.book.estimateLabel(t.book.nights(nights), money(booking.priceFrom, booking.currency))}</span>
                       <span className="font-semibold text-foreground">
                         {money(nights * booking.priceFrom, booking.currency)}
                       </span>
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">{copy.estimateNote}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{t.book.estimateNote}</p>
                     {nights < booking.minNights && (
                       <p className="mt-2 text-xs text-amber-600 font-medium">
-                        {copy.minNightsNote(booking.minNights)}
+                        {t.book.minNightsNote(booking.minNights)}
                       </p>
                     )}
                   </div>
@@ -429,14 +431,14 @@ export function Book({
                   <p className="rounded-lg bg-red-500/10 p-3 text-xs text-red-500">{errorMessage}</p>
                 )}
                 {formStatus === "mail" && (
-                  <p className="rounded-lg bg-green-500/10 p-3 text-xs text-green-600">{copy.mailOpened}</p>
+                  <p className="rounded-lg bg-green-500/10 p-3 text-xs text-green-600">{t.book.mailOpened}</p>
                 )}
                 {formStatus === "sent" && (
-                  <p className="rounded-lg bg-green-500/10 p-3 text-xs text-green-600">{copy.sent}</p>
+                  <p className="rounded-lg bg-green-500/10 p-3 text-xs text-green-600">{t.book.sent}</p>
                 )}
                 {formStatus === "error" && (
                   <p className="rounded-lg bg-red-500/10 p-3 text-xs text-red-500">
-                    {copy.errors.network}{" "}
+                    {t.book.errors.network}{" "}
                     <a href={`mailto:${email}`} className="underline">
                       {email}
                     </a>
@@ -449,10 +451,10 @@ export function Book({
                   disabled={formStatus === "sending"}
                   className="fill-btn mt-2 flex h-14 w-full items-center justify-center rounded-xl bg-primary font-medium text-primary-foreground shadow-md transition-transform active:scale-[0.98] disabled:opacity-50"
                 >
-                  <Roll>{formStatus === "sending" ? copy.sending : copy.submit}</Roll>
+                  <Roll>{formStatus === "sending" ? t.book.sending : t.book.submit}</Roll>
                 </button>
 
-                <p className="text-center text-xs text-muted-foreground">{copy.noCharge}</p>
+                <p className="text-center text-xs text-muted-foreground">{t.book.noCharge}</p>
               </form>
             </div>
           </Reveal>

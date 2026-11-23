@@ -7,6 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Picture } from "@/components/ui/Picture";
 import { Icon } from "@/components/ui/Icons";
 import { Counter } from "@/components/ui/Counter";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface DetailsProps {
   id?: string;
@@ -31,8 +32,14 @@ export function Details({
   mediaBase = "/media",
   static: isStatic,
 }: DetailsProps) {
+  const { lang, t } = useLanguage();
+  const displayLabel = label === villa.details.label ? t.details.label : label;
+  const displayHeading = heading === villa.details.heading ? t.details.heading : heading;
+  const displayAmenities = amenities === villa.details.amenities ? t.details.groups : amenities;
+  const displayArea = area === villa.details.area ? t.details.area : area;
+
   const headingId = useId();
-  const sortedPlaces = [...area.places].sort((a, b) => a.minutes - b.minutes);
+  const sortedPlaces = [...displayArea.places].sort((a, b) => a.minutes - b.minutes);
   const maxMinutes = Math.max(...sortedPlaces.map((p) => p.minutes));
 
   return (
@@ -42,16 +49,16 @@ export function Details({
       className="bg-background py-16 text-foreground sm:py-24 md:py-36 px-5 sm:px-8 md:px-12"
     >
       <div className="mx-auto max-w-7xl">
-        <Slate index={index} label={label} className="text-muted-foreground" />
+        <Slate index={index} label={displayLabel} className="text-muted-foreground" />
         <Reveal variant="rise" static={isStatic} as="h2" className="mt-6">
           <span id={headingId} className="block max-w-[18ch] text-[clamp(2.3rem,4.6vw,4.25rem)]">
-            {heading}
+            {displayHeading}
           </span>
         </Reveal>
 
         {/* 3 Horizontal / Grid Amenities Cards */}
         <ul className="no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
-          {amenities.map((group) => (
+          {displayAmenities.map((group) => (
             <li
               key={group.group}
               className="w-[84%] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card text-card-foreground sm:w-[60%] md:w-auto"
@@ -84,20 +91,20 @@ export function Details({
         {/* Around the House Section with Sqrt Distance Scaling */}
         <div className="mt-16 grid gap-8 md:mt-32 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
-            <h3 className="text-[clamp(1.9rem,3.2vw,2.75rem)] font-display">{area.heading}</h3>
-            <p className="mt-4 max-w-[44ch] text-lg text-muted-foreground">{area.text}</p>
+            <h3 className="text-[clamp(1.9rem,3.2vw,2.75rem)] font-display">{displayArea.heading}</h3>
+            <p className="mt-4 max-w-[44ch] text-lg text-muted-foreground">{displayArea.text}</p>
             <a
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-7 inline-flex h-12 items-center gap-2 rounded-full border border-foreground px-6 font-medium transition-[color,background-color,transform] hover:bg-foreground hover:text-background active:scale-[0.97]"
             >
-              <span>{area.openMaps}</span>
+              <span>{displayArea.openMaps}</span>
               <Icon name="arrow" className="h-4 w-4" />
             </a>
           </div>
 
-          <ol className="grid gap-5 md:col-span-7" aria-label={area.heading}>
+          <ol className="grid gap-5 md:col-span-7" aria-label={displayArea.heading}>
             {sortedPlaces.map((place) => (
               <li key={place.name}>
                 <div className="flex items-baseline justify-between gap-4">
@@ -106,7 +113,7 @@ export function Details({
                     <span className="font-display text-2xl text-foreground">
                       <Counter value={place.minutes} static={isStatic} duration={900} />
                     </span>{" "}
-                    {area.minutes} {place.by}
+                    {displayArea.minutes} {place.by}
                   </span>
                 </div>
                 <div className="relative mt-2.5 h-[3px] rounded-full bg-muted" aria-hidden="true">

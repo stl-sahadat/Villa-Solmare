@@ -4,6 +4,7 @@ import React from "react";
 import { CanvasSequence } from "@/components/ui/CanvasSequence";
 import { Reveal } from "@/components/ui/Reveal";
 import { villa } from "@/config/solmare.config";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Arrival({
   name = villa.site.name,
@@ -26,6 +27,12 @@ export function Arrival({
   loadingLabel?: string;
   static?: boolean;
 }) {
+  const { lang, t } = useLanguage();
+  const displayEyebrow = eyebrow === villa.arrival.eyebrow ? t.arrival.eyebrow : eyebrow;
+  const displayTagline = tagline === villa.arrival.tagline ? t.arrival.tagline : tagline;
+  const displayHint = hint === villa.arrival.hint ? t.arrival.hint : hint;
+  const displayLoading = loadingLabel === villa.ui.loading ? t.arrival.loading : loadingLabel;
+
   const steps = [{ from: 0, to: 0.2 }];
 
   return (
@@ -38,7 +45,7 @@ export function Arrival({
       steps={steps}
       priority={true}
       static={isStatic}
-      loadingLabel={loadingLabel}
+      loadingLabel={displayLoading}
     >
       {({ step, ready }) => {
         const isOpen = ready && (isStatic || step === 0);
@@ -53,8 +60,8 @@ export function Arrival({
             {/* Typography Content */}
             <div className="absolute inset-x-0 bottom-0 pb-[calc(2.25rem+env(safe-area-inset-bottom))] md:pb-12 px-5 sm:px-8 md:px-12">
               <Reveal variant="rise" open={isOpen} static={isStatic}>
-                <span lang="it" className="font-display text-xl italic text-screen-foreground md:text-2xl">
-                  {eyebrow}
+                <span lang={lang} className="font-display text-xl italic text-screen-foreground md:text-2xl">
+                  {displayEyebrow}
                 </span>
               </Reveal>
 
@@ -66,12 +73,12 @@ export function Arrival({
 
               <div className="mt-5 flex flex-wrap items-end justify-between gap-6 md:mt-7">
                 <Reveal variant="rise" open={isOpen} delay={160} static={isStatic} className="max-w-[30ch]">
-                  <p className="text-lg text-screen-foreground md:text-xl">{tagline}</p>
+                  <p className="text-lg text-screen-foreground md:text-xl">{displayTagline}</p>
                 </Reveal>
 
                 <Reveal variant="rise" open={isOpen} delay={220} static={isStatic} className="hidden md:block">
                   <span className="flex items-center gap-3 text-sm text-screen-foreground">
-                    {hint}
+                    {displayHint}
                     <span
                       aria-hidden="true"
                       className="relative block h-10 w-px overflow-hidden bg-screen-foreground/30"

@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { villa } from "@/config/solmare.config";
 import { Roll } from "@/components/ui/Roll";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface FooterProps {
   name?: string;
@@ -21,6 +22,7 @@ export function Footer({
   privacyLabel = villa.book.fields.privacy,
   static: isStatic,
 }: FooterProps) {
+  const { lang, t } = useLanguage();
   const wordmarkRef = useRef<HTMLParagraphElement>(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -46,19 +48,28 @@ export function Footer({
   const linkHover =
     "relative after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:[transition-timing-function:var(--ease-door)] hover:after:scale-x-100 focus-visible:after:scale-x-100";
 
+  const displayContactTitle = t.footer.contact;
+  const displayAddressTitle = t.footer.address;
+  const displayRights = t.footer.rights;
+  const displayCredit = t.footer.credit;
+  const displayPrivacy = t.footer.privacy;
+  const displayStreet = t.footer.street;
+  const displayCity = t.footer.city;
+  const displayCountry = t.footer.country;
+
   return (
     <footer className="overflow-hidden bg-card text-card-foreground">
       <div className={`mx-auto grid max-w-7xl gap-10 pt-16 sm:grid-cols-2 md:grid-cols-12 md:pt-24 ${padding}`}>
         {/* Brand & Description */}
         <div className="md:col-span-5">
           <p className="font-display text-3xl">{name}</p>
-          <p className="mt-3 max-w-[30ch] text-muted-foreground">{villa.site.description}</p>
+          <p className="mt-3 max-w-[30ch] text-muted-foreground">{t.intro.text}</p>
         </div>
 
         {/* Contact Links */}
         <div className="md:col-span-3 md:col-start-7">
           <h2 className="text-sm font-medium text-muted-foreground font-sans tracking-normal">
-            {footer.contact}
+            {displayContactTitle}
           </h2>
           <ul className="mt-4 grid gap-1.5 text-lg">
             <li>
@@ -97,14 +108,14 @@ export function Footer({
         {/* Address */}
         <div className="md:col-span-3">
           <h2 className="text-sm font-medium text-muted-foreground font-sans tracking-normal">
-            {footer.address}
+            {displayAddressTitle}
           </h2>
           <address className="mt-4 text-lg leading-relaxed not-italic">
-            {contact.address.street}
+            {displayStreet}
             <br />
-            {contact.address.city}
+            {displayCity}
             <br />
-            {contact.address.countryName}
+            {displayCountry}
           </address>
         </div>
       </div>
@@ -124,17 +135,34 @@ export function Footer({
 
       {/* Copyright Sub-Bar */}
       <div
-        className={`mx-auto mt-10 flex max-w-7xl flex-wrap justify-between gap-x-8 gap-y-2 border-t border-border pt-6 pb-28 text-sm text-muted-foreground md:pb-8 ${padding}`}
+        className={`mx-auto mt-10 flex max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-3 border-t border-border pt-6 pb-28 text-sm text-muted-foreground md:pb-8 ${padding}`}
       >
         <p>
-          © {currentYear} {legal.owner}. {footer.rights}
+          © {currentYear} {legal.owner}. {displayRights}
         </p>
+
+        {/* Live Cloudflare Pages Indicator */}
+        <div className="flex items-center gap-2">
+          <a
+            href="https://villa-solmare-deu.pages.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary transition-all hover:bg-primary/20 hover:border-primary/40"
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+            </span>
+            <span>{t.footer.livePill}</span>
+          </a>
+        </div>
+
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {legal.cin ? (
             <span className="tnum">CIN {legal.cin}</span>
           ) : null}
           <a href={legal.privacyUrl} className={linkHover}>
-            {privacyLabel}
+            {displayPrivacy}
           </a>
           {footer.credit && (
             <a
@@ -143,7 +171,7 @@ export function Footer({
               rel="noopener noreferrer"
               className={linkHover}
             >
-              {footer.credit.label}
+              {displayCredit}
             </a>
           )}
         </div>

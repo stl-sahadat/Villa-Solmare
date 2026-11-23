@@ -4,6 +4,7 @@ import React, { useState, useId } from "react";
 import { villa } from "@/config/solmare.config";
 import { Slate } from "@/components/ui/Slate";
 import { Reveal } from "@/components/ui/Reveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface FaqProps {
   id?: string;
@@ -22,6 +23,11 @@ export function Faq({
   items = villa.faq.items,
   static: isStatic,
 }: FaqProps) {
+  const { lang, t } = useLanguage();
+  const displayLabel = label === villa.faq.label ? t.faq.label : label;
+  const displayHeading = heading === villa.faq.heading ? t.faq.heading : heading;
+  const displayItems = items === villa.faq.items ? t.faq.items : items;
+
   const [openIndex, setOpenIndex] = useState(-1);
   const baseId = useId();
   const padding = "px-5 sm:px-8 md:px-12";
@@ -35,17 +41,17 @@ export function Faq({
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12 md:gap-10">
         {/* Left Column: Heading & Slate */}
         <div className="md:col-span-5">
-          <Slate index={index} label={label} className="text-muted-foreground" />
+          <Slate index={index} label={displayLabel} className="text-muted-foreground" />
           <Reveal variant="rise" static={isStatic} as="h2" className="mt-6">
             <span id={`${baseId}-h`} className="block text-[clamp(2.3rem,4.6vw,4.25rem)]">
-              {heading}
+              {displayHeading}
             </span>
           </Reveal>
         </div>
 
         {/* Right Column: Accordion Items */}
         <div className="border-b border-border md:col-span-7">
-          {items.map((item, idx) => {
+          {displayItems.map((item, idx) => {
             const isOpen = openIndex === idx;
             const regionId = `${baseId}-a${idx}`;
 

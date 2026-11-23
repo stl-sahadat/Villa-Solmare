@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { villa, navigation } from "@/config/solmare.config";
 import { money } from "@/lib/utils";
 import { Roll } from "@/components/ui/Roll";
+import { useLanguage } from "@/context/LanguageContext";
 
 function getStoredTheme(): string {
   if (typeof window === "undefined") return "system";
@@ -67,6 +68,26 @@ function ThemeToggle({
   );
 }
 
+function LanguageToggle({ className = "" }: { className?: string }) {
+  const { lang, setLang } = useLanguage();
+
+  return (
+    <button
+      type="button"
+      onClick={() => setLang(lang === "en" ? "bn" : "en")}
+      aria-label={lang === "en" ? "বাংলায় পরিবর্তন করুন" : "Switch to English"}
+      title={lang === "en" ? "বাংলায় পড়ুন" : "Read in English"}
+      className={`group flex h-11 items-center gap-1.5 rounded-full px-3 text-[0.88rem] transition-colors duration-500 hover:opacity-100 ${className}`}
+    >
+      <span className="font-sans flex items-center gap-1">
+        <span className={lang === "en" ? "font-semibold text-current" : "opacity-45 hover:opacity-75"}>EN</span>
+        <span className="opacity-30">/</span>
+        <span className={lang === "bn" ? "font-semibold text-current" : "opacity-45 hover:opacity-75"}>বাংলা</span>
+      </span>
+    </button>
+  );
+}
+
 export interface HeaderProps {
   name?: string;
   items?: typeof navigation;
@@ -96,11 +117,20 @@ export function Header({
   hideBarNear = `#${villa.book.id}`,
   static: isStatic,
 }: HeaderProps) {
+  const { lang, t } = useLanguage();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [tone, setTone] = useState<"footage" | "dark" | "light">("footage");
   const [isBarVisible, setIsBarVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(0);
+
+  const navLabelMap: Record<string, string> = {
+    "the-house": t.nav.theHouse,
+    "inside": t.nav.inside,
+    "amenities": t.nav.amenities,
+    "guests": t.nav.guests,
+    "stay": t.nav.stay,
+  };
 
   const scrollToSection = (targetId: string) => {
     const cleanId = targetId.replace(/^[/#]+/, "");
@@ -236,7 +266,8 @@ export function Header({
 
           {/* Right Header Navigation & Actions */}
           <div className="flex items-center gap-1 md:gap-3">
-            <ThemeToggle labels={{ day: ui.day, night: ui.night, action: ui.theme }} />
+            <ThemeToggle labels={{ day: t.ui.day, night: t.ui.night, action: t.ui.theme }} />
+            <LanguageToggle />
 
             <a
               href={bookHref}
@@ -246,7 +277,7 @@ export function Header({
                   : "border-primary bg-primary text-primary-foreground [--fill:var(--color-foreground)] hover:text-background focus-visible:text-background"
               }`}
             >
-              {ui.book}
+              {t.ui.book}
             </a>
 
             <button
@@ -257,7 +288,7 @@ export function Header({
               onClick={openMenu}
               className="flex h-11 items-center gap-3 rounded-full px-3 text-[0.95rem]"
             >
-              <Roll>{ui.menu}</Roll>
+              <Roll>{t.ui.menu}</Roll>
               <span aria-hidden="true" className="flex w-6 flex-col gap-[5px]">
                 <span className="h-px w-full bg-current" />
                 <span className="h-px w-2/3 self-end bg-current" />
@@ -296,17 +327,20 @@ export function Header({
             {/* Modal Header */}
             <div className="flex h-14 items-center justify-between md:h-20">
               <span className="font-display text-2xl md:text-[1.7rem]">{name}</span>
-              <button
-                type="button"
-                onClick={closeMenu}
-                className="flex h-11 items-center gap-3 rounded-full px-3 text-[0.95rem]"
-              >
-                <Roll>{ui.close}</Roll>
-                <span aria-hidden="true" className="relative block h-4 w-4">
-                  <span className="absolute top-1/2 left-0 h-px w-full rotate-45 bg-current" />
-                  <span className="absolute top-1/2 left-0 h-px w-full -rotate-45 bg-current" />
-                </span>
-              </button>
+              <div className="flex items-center gap-2">
+                <LanguageToggle />
+                <button
+                  type="button"
+                  onClick={closeMenu}
+                  className="flex h-11 items-center gap-3 rounded-full px-3 text-[0.95rem]"
+                >
+                  <Roll>{t.ui.close}</Roll>
+                  <span aria-hidden="true" className="relative block h-4 w-4">
+                    <span className="absolute top-1/2 left-0 h-px w-full rotate-45 bg-current" />
+                    <span className="absolute top-1/2 left-0 h-px w-full -rotate-45 bg-current" />
+                  </span>
+                </button>
+              </div>
             </div>
 
             {/* Menu Body */}
@@ -335,7 +369,7 @@ export function Header({
                       <span className="tnum font-sans text-sm text-screen-foreground/70">
                         0{idx + 1}
                       </span>
-                      <Roll>{item.label}</Roll>
+                      <Roll>{navLabelMap[item.slug || ""] || item.label}</Roll>
                     </a>
                   </li>
                 ))}
@@ -371,7 +405,7 @@ export function Header({
               }}
               className="mb-6 flex h-14 items-center justify-center rounded-full bg-primary font-medium text-primary-foreground transition-transform active:scale-[0.98] md:hidden"
             >
-              {ui.book}
+              {t.ui.book}
             </a>
 
             {/* Modal Bottom Contact */}
@@ -398,9 +432,8 @@ export function Header({
           <div className="flex items-center justify-between gap-4">
             <p className="leading-tight">
               <span className="tnum font-semibold">{money(priceFrom, currency)}</span>
-              <span className="text-xs text-primary font-medium ml-1">টাকা</span>
-              <span className="text-muted-foreground"> / {ui.perNight}</span>
-              <span className="block text-xs text-muted-foreground">{ui.minStay(minNights)}</span>
+              <span className="text-muted-foreground"> / {t.ui.perNight}</span>
+              <span className="block text-xs text-muted-foreground">{t.ui.minStay(minNights)}</span>
             </p>
             <a
               href="/stay"
@@ -410,7 +443,7 @@ export function Header({
               }}
               className="flex h-12 items-center rounded-full bg-primary px-6 font-medium text-primary-foreground transition-transform active:scale-[0.96]"
             >
-              {ui.book}
+              {t.ui.book}
             </a>
           </div>
         </div>

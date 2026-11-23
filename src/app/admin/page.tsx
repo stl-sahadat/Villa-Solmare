@@ -381,7 +381,7 @@ export default function AdminPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
-                      Nightly Rate (৳ BDT - বাংলাদেশ টাকা)
+                      Nightly Rate (BDT ৳)
                     </label>
                     <input
                       type="number"
@@ -392,7 +392,7 @@ export default function AdminPage() {
                   </div>
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
-                      Currency (মুদ্রা)
+                      Currency (e.g. BDT)
                     </label>
                     <input
                       type="text"

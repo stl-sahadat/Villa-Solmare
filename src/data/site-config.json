@@ -3,11 +3,11 @@
     "name": "Villa Solmare",
     "title": "Villa Solmare — Clifftop Coastal Sanctuary | Bay of Bengal, Bangladesh",
     "description": "An ultra-luxury coastal stone sanctuary with panoramic Bay of Bengal views, private terrace, four bedroom suites and tropical garden, 300 metres from Inani Beach. Sleeps 8.",
-    "url": "https://villa-solmare.example.com",
+    "url": "https://villa-solmare.pages.dev",
     "lang": "en"
   },
   "arrival": {
-    "eyebrow": "স্বাগতম — Welcome",
+    "eyebrow": "The Arrival",
     "tagline": "A stone sanctuary above the sea, on the scenic southern coast of Bangladesh.",
     "hint": "Scroll to arrive"
   },
@@ -61,21 +61,21 @@
         "from": 0,
         "to": 0.3,
         "name": "The living room",
-        "italian": "লিভিং লাউঞ্জ",
+        "italian": "il soggiorno",
         "text": "Linen sofas, hand-carved stone hearth and timber beams overhead. An arch leads straight into the kitchen."
       },
       {
         "from": 0.3,
         "to": 0.66,
         "name": "The kitchen",
-        "italian": "রসুইঘর",
+        "italian": "la cucina",
         "text": "Artisanal hand-painted tiles, brass cookware and a long solid wood table, with a bowl of fresh citrus from the coastal garden."
       },
       {
         "from": 0.66,
         "to": 1.01,
         "name": "The main bedroom",
-        "italian": "মাস্টার স্যুট",
+        "italian": "la camera padronale",
         "text": "A linen canopy bed and French windows opening onto the terrace overlooking the Bay of Bengal. It is one of four bedrooms."
       }
     ]

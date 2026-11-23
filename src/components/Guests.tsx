@@ -6,6 +6,7 @@ import { Slate } from "@/components/ui/Slate";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icons";
 import { useReducedMotion } from "@/components/ui/CanvasSequence";
+import { useLanguage } from "@/context/LanguageContext";
 
 function StarRating({ value = 5, className = "" }: { value?: number; className?: string }) {
   return (
@@ -67,13 +68,22 @@ export function Guests({
   speed = 70,
   static: isStatic,
 }: GuestsProps) {
+  const { lang, t } = useLanguage();
+  const displayLabel = label === villa.guests.label ? t.guests.label : label;
+  const displayHeading = heading === villa.guests.heading ? t.guests.heading : heading;
+  const displayRating = rating === villa.guests.rating ? t.guests.rating : rating;
+  const displayCount = count === villa.guests.count ? t.guests.count : count;
+  const displaySource = source === villa.guests.source ? t.guests.source : source;
+  const displayNights = nights === villa.guests.nights ? t.guests.nights : nights;
+  const displayItems = items === villa.guests.items ? t.guests.items : items;
+
   const headingId = useId();
   const reducedMotion = useReducedMotion();
   const [isPaused, setIsPaused] = useState(false);
   const shouldAnimate = !isStatic && !reducedMotion;
 
-  const half = Math.ceil(items.length / 2);
-  const lanes = [items.slice(0, half), items.slice(half)];
+  const half = Math.ceil(displayItems.length / 2);
+  const lanes = [displayItems.slice(0, half), displayItems.slice(half)];
   const padding = "px-5 sm:px-8 md:px-12";
 
   return (
@@ -84,31 +94,31 @@ export function Guests({
     >
       <div className={`mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-10 ${padding}`}>
         <div>
-          <Slate index={index} label={label} className="text-muted-foreground" />
+          <Slate index={index} label={displayLabel} className="text-muted-foreground" />
           <Reveal variant="rise" static={isStatic} as="h2" className="mt-6">
             <span id={headingId} className="block max-w-[16ch] text-[clamp(2.3rem,4.6vw,4.25rem)]">
-              {heading}
+              {displayHeading}
             </span>
           </Reveal>
         </div>
 
         <div className="flex items-center gap-5">
           <p className="tnum font-display text-[clamp(3.5rem,6vw,5rem)] leading-none font-[340]">
-            {rating}
+            {displayRating}
           </p>
           <div>
             <StarRating className="text-foreground [&_svg]:h-4 [&_svg]:w-4" />
-            <p className="mt-2 font-medium">{count}</p>
-            <p className="max-w-[24ch] text-sm text-muted-foreground">{source}</p>
+            <p className="mt-2 font-medium">{displayCount}</p>
+            <p className="max-w-[24ch] text-sm text-muted-foreground">{displaySource}</p>
           </div>
         </div>
       </div>
 
       {/* Screen reader full reviews list */}
       <ul className="sr-only">
-        {items.map((r) => (
+        {displayItems.map((r) => (
           <li key={r.author}>
-            “{r.quote}” {r.author}, {r.from}, {r.when}, {nights(r.nights)}.
+            “{r.quote}” {r.author}, {r.from}, {r.when}, {displayNights(r.nights)}.
           </li>
         ))}
       </ul>
@@ -137,7 +147,7 @@ export function Guests({
               } as React.CSSProperties}
             >
               {(shouldAnimate ? [...lane, ...lane] : lane).map((r, itemIdx) => (
-                <ReviewCard key={`${r.author}-${itemIdx}`} r={r} nights={nights} />
+                <ReviewCard key={`${r.author}-${itemIdx}`} r={r} nights={displayNights} />
               ))}
             </div>
           </div>

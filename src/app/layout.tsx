@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { villa } from "@/config/solmare.config";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -111,10 +112,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/woff2"
         />
         <link rel="preload" href="/fonts/geist.woff2" as="font" crossOrigin="" type="font/woff2" />
-        {/* Anti-FOUC theme hydration script matching original */}
+        {/* Anti-FOUC theme & lang hydration script matching original */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var d=document.documentElement,s=localStorage.getItem("villa-theme"),c="system";var t=s||(c!=="system"?c:(matchMedia("(prefers-color-scheme: dark)").matches?"night":"day"));d.dataset.theme=t}catch(e){}})()`,
+            __html: `(function(){try{var d=document.documentElement,s=localStorage.getItem("villa-theme"),c="system";var t=s||(c!=="system"?c:(matchMedia("(prefers-color-scheme: dark)").matches?"night":"day"));d.dataset.theme=t;var l=localStorage.getItem("villa-lang");if(l){d.lang=l;}}catch(e){}})()`,
           }}
         />
         <script
@@ -122,7 +123,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }
