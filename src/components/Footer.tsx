@@ -144,7 +144,7 @@ export function Footer({
         {/* Live Cloudflare Pages Indicator */}
         <div className="flex items-center gap-2">
           <a
-            href="https://villa-solmare-deu.pages.dev"
+            href="https://villa-solmare.pages.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary transition-all hover:bg-primary/20 hover:border-primary/40"

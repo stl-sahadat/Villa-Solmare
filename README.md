@@ -1,13 +1,13 @@
 # Villa Solmare — Ultra-Luxury Coastal Architectural Sanctuary
 
-[![Live Production](https://img.shields.io/badge/Live_Site-villa--solmare--deu.pages.dev-2ea44f?style=for-the-badge&logo=cloudflare)](https://villa-solmare-deu.pages.dev)
+[![Live Production](https://img.shields.io/badge/Live_Site-villa--solmare.pages.dev-2ea44f?style=for-the-badge&logo=cloudflare)](https://villa-solmare.pages.dev)
 [![GitHub](https://img.shields.io/badge/GitHub-stl--sahadat%2FVilla--Solmare-181717?style=for-the-badge&logo=github)](https://github.com/stl-sahadat/Villa-Solmare)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![React 19](https://img.shields.io/badge/React-19.3-blue?style=for-the-badge&logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
 
-> 🌐 **Live Cloudflare Pages Production:** [https://villa-solmare-deu.pages.dev](https://villa-solmare-deu.pages.dev) (Primary) / [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)  
-> 🔒 **Admin Management Suite:** [https://villa-solmare-deu.pages.dev/admin](https://villa-solmare-deu.pages.dev/admin)
+> 🌐 **Live Cloudflare Pages Production:** [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)  
+> 🔒 **Admin Management Suite:** [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin)
 
 ---
 
@@ -15,7 +15,7 @@
 
 Villa Solmare is an ultra-luxury coastal stone sanctuary situated on the clifftops overlooking the Bay of Bengal near Inani Beach, Marine Drive, Cox's Bazar, Bangladesh.
 
-Engineered under the direct leadership of **Md Sahadat Hossain (Sahadat vai)** adhering strictly to the **21st.dev Design Engineering standard**, this application delivers an authentic 1:1 architectural template clone of Villa Aurelia. The system integrates Next.js 15, React 19, strict TypeScript, Tailwind CSS, Fraunces serif typography, a 64-frame multi-pass strided canvas arrival sequence, a 192-frame virtual room walkthrough, an ambient sunset loop, a dynamic bilingual localization engine (English & authentic literary Bengali), and an interactive administrative management suite with Cloudflare Edge runtime capabilities.
+Engineered under the direct leadership of **Md Sahadat Hossain (Sahadat vai)** adhering strictly to the **21st.dev Design Engineering standard**, this application delivers an authentic 1:1 architectural template clone of Villa Aurelia. The system integrates Next.js 15, React 19, strict TypeScript, Tailwind CSS, Fraunces serif typography, a 64-frame multi-pass strided canvas arrival sequence, a 192-frame virtual room walkthrough, an ambient sunset loop, a dynamic bilingual localization engine (English & authentic literary Bengali with Charukola artistic typography), and an interactive administrative management suite with Cloudflare Edge runtime capabilities.
 
 ---
 
@@ -23,15 +23,15 @@ Engineered under the direct leadership of **Md Sahadat Hossain (Sahadat vai)** a
 
 | Section / Feature | Route Path | Live URL |
 | :--- | :--- | :--- |
-| **Home (Cinematic Narrative)** | `/` | [https://villa-solmare-deu.pages.dev/](https://villa-solmare-deu.pages.dev/) |
-| **The House & Architecture** | `/the-house` | [https://villa-solmare-deu.pages.dev/the-house](https://villa-solmare-deu.pages.dev/the-house) |
-| **Inside & Virtual Walkthrough** | `/inside` | [https://villa-solmare-deu.pages.dev/inside](https://villa-solmare-deu.pages.dev/inside) |
-| **Amenities & Surrounding Area** | `/amenities` | [https://villa-solmare-deu.pages.dev/amenities](https://villa-solmare-deu.pages.dev/amenities) |
-| **Guest Reviews & Testimonials** | `/guests` | [https://villa-solmare-deu.pages.dev/guests](https://villa-solmare-deu.pages.dev/guests) |
-| **Plan Your Stay (Booking Engine)** | `/stay` | [https://villa-solmare-deu.pages.dev/stay](https://villa-solmare-deu.pages.dev/stay) |
-| **Frequently Asked Questions** | `/faq` | [https://villa-solmare-deu.pages.dev/faq](https://villa-solmare-deu.pages.dev/faq) |
-| **Administrative Dashboard** | `/admin` | [https://villa-solmare-deu.pages.dev/admin](https://villa-solmare-deu.pages.dev/admin) |
-| **Privacy Notice** | `/privacy` | [https://villa-solmare-deu.pages.dev/privacy](https://villa-solmare-deu.pages.dev/privacy) |
+| **Home (Cinematic Narrative)** | `/` | [https://villa-solmare.pages.dev/](https://villa-solmare.pages.dev/) |
+| **The House & Architecture** | `/the-house` | [https://villa-solmare.pages.dev/the-house](https://villa-solmare.pages.dev/the-house) |
+| **Inside & Virtual Walkthrough** | `/inside` | [https://villa-solmare.pages.dev/inside](https://villa-solmare.pages.dev/inside) |
+| **Amenities & Surrounding Area** | `/amenities` | [https://villa-solmare.pages.dev/amenities](https://villa-solmare.pages.dev/amenities) |
+| **Guest Reviews & Testimonials** | `/guests` | [https://villa-solmare.pages.dev/guests](https://villa-solmare.pages.dev/guests) |
+| **Plan Your Stay (Booking Engine)** | `/stay` | [https://villa-solmare.pages.dev/stay](https://villa-solmare.pages.dev/stay) |
+| **Frequently Asked Questions** | `/faq` | [https://villa-solmare.pages.dev/faq](https://villa-solmare.pages.dev/faq) |
+| **Administrative Dashboard** | `/admin` | [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin) |
+| **Privacy Notice** | `/privacy` | [https://villa-solmare.pages.dev/privacy](https://villa-solmare.pages.dev/privacy) |
 
 ---
 
