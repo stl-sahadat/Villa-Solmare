@@ -112,10 +112,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/woff2"
         />
         <link rel="preload" href="/fonts/geist.woff2" as="font" crossOrigin="" type="font/woff2" />
+        <link rel="preload" href="/fonts/charukola-round.ttf" as="font" crossOrigin="" type="font/ttf" />
         {/* Anti-FOUC theme & lang hydration script matching original */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var d=document.documentElement,s=localStorage.getItem("villa-theme"),c="system";var t=s||(c!=="system"?c:(matchMedia("(prefers-color-scheme: dark)").matches?"night":"day"));d.dataset.theme=t;var l=localStorage.getItem("villa-lang");if(l){d.lang=l;}}catch(e){}})()`,
+            __html: `(function(){try{var d=document.documentElement,s=localStorage.getItem("villa-theme"),c="system";var t=s||(c!=="system"?c:(matchMedia("(prefers-color-scheme: dark)").matches?"night":"day"));d.dataset.theme=t;var l=localStorage.getItem("villa-lang");if(l){d.lang=l;d.dataset.lang=l;if(l==="bn"){d.classList.add("font-bangla");}}}catch(e){}})()`,
           }}
         />
         <script

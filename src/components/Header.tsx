@@ -68,22 +68,44 @@ function ThemeToggle({
   );
 }
 
+function GlobeIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+      <path d="M2 12h20" />
+    </svg>
+  );
+}
+
 function LanguageToggle({ className = "" }: { className?: string }) {
-  const { lang, setLang } = useLanguage();
+  const { lang, toggleLang } = useLanguage();
 
   return (
     <button
       type="button"
-      onClick={() => setLang(lang === "en" ? "bn" : "en")}
-      aria-label={lang === "en" ? "বাংলায় পরিবর্তন করুন" : "Switch to English"}
-      title={lang === "en" ? "বাংলায় পড়ুন" : "Read in English"}
-      className={`group flex h-11 items-center gap-1.5 rounded-full px-3 text-[0.88rem] transition-colors duration-500 hover:opacity-100 ${className}`}
+      onClick={toggleLang}
+      aria-label={lang === "en" ? "বাংলা ভাষায় দেখুন" : "Switch to English"}
+      title={lang === "en" ? "বাংলা সংস্করণে পরিবর্তন করুন (Charukola Font)" : "Switch to English"}
+      className={`group relative flex h-11 w-11 items-center justify-center rounded-full border border-current/20 transition-all duration-500 hover:border-current/60 hover:bg-current/5 ${className}`}
     >
-      <span className="font-sans flex items-center gap-1">
-        <span className={lang === "en" ? "font-semibold text-current" : "opacity-45 hover:opacity-75"}>EN</span>
-        <span className="opacity-30">/</span>
-        <span className={lang === "bn" ? "font-semibold text-current" : "opacity-45 hover:opacity-75"}>বাংলা</span>
-      </span>
+      <GlobeIcon className="h-[19px] w-[19px] transition-transform duration-700 [transition-timing-function:var(--ease-door)] group-hover:rotate-90" />
+      <span
+        aria-hidden="true"
+        className={`absolute bottom-2 right-2 h-1.5 w-1.5 rounded-full transition-all duration-500 ${
+          lang === "bn" ? "bg-accent opacity-100 scale-100" : "opacity-0 scale-50"
+        }`}
+      />
     </button>
   );
 }

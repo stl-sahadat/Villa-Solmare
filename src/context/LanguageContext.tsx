@@ -24,17 +24,24 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
+      let initial: Language = "en";
       const stored = localStorage.getItem("villa-lang") as Language;
       if (stored === "en" || stored === "bn") {
-        setLangState(stored);
-        document.documentElement.lang = stored;
+        initial = stored;
       } else {
         const params = new URLSearchParams(window.location.search);
         const paramLang = params.get("lang") as Language;
         if (paramLang === "bn" || paramLang === "en") {
-          setLangState(paramLang);
-          document.documentElement.lang = paramLang;
+          initial = paramLang;
         }
+      }
+      setLangState(initial);
+      document.documentElement.lang = initial;
+      document.documentElement.setAttribute("data-lang", initial);
+      if (initial === "bn") {
+        document.documentElement.classList.add("font-bangla");
+      } else {
+        document.documentElement.classList.remove("font-bangla");
       }
     } catch {}
   }, []);
@@ -42,6 +49,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const setLang = (newLang: Language) => {
     setLangState(newLang);
     document.documentElement.lang = newLang;
+    document.documentElement.setAttribute("data-lang", newLang);
+    if (newLang === "bn") {
+      document.documentElement.classList.add("font-bangla");
+    } else {
+      document.documentElement.classList.remove("font-bangla");
+    }
     try {
       localStorage.setItem("villa-lang", newLang);
     } catch {}

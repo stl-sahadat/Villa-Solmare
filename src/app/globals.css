@@ -23,11 +23,33 @@
   font-weight: 100 900;
   font-style: normal;
 }
+@font-face {
+  font-family: "Charukola Round";
+  src: url(/fonts/charukola-round.ttf) format("truetype");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Charukola";
+  src: url(/fonts/charukola-regular.ttf) format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Charukola";
+  src: url(/fonts/charukola-bold.ttf) format("truetype");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
 
 :root {
   --font-geist: "geist", system-ui, sans-serif;
   --font-geist-sans: "geist", system-ui, sans-serif;
   --font-fraunces: "fraunces", Georgia, serif;
+  --font-bangla: "Charukola Round", "Charukola", system-ui, sans-serif;
   --ease-door: cubic-bezier(.76, 0, .24, 1);
   --ease-spring: linear(0, .0036 2.7%, .0185 5.4%, .0548 9.1%, .1341 14.3%, .3209 22.3%, .5629 31.5%, .7458 40.1%, .8651 48.1%, .9418 56.1%, .9855 65.3%, 1.0054 75.3%, 1.0085 86.3%, 1);
 
@@ -77,6 +99,38 @@ html {
   font-family: var(--font-geist);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Bengali artistic typography (Charukola Round / Charukola Unicode) */
+html[lang="bn"],
+html.font-bangla,
+:root[data-lang="bn"] {
+  --font-geist: "Charukola Round", "Charukola", system-ui, sans-serif;
+  --font-geist-sans: "Charukola Round", "Charukola", system-ui, sans-serif;
+  --font-fraunces: "Charukola Round", "Charukola", serif;
+  font-family: "Charukola Round", "Charukola", system-ui, sans-serif;
+}
+
+html[lang="bn"] .font-display,
+html[lang="bn"] .font-serif,
+html[lang="bn"] h1,
+html[lang="bn"] h2,
+html[lang="bn"] h3 {
+  font-family: "Charukola Round", "Charukola", serif !important;
+  letter-spacing: -0.01em;
+}
+
+html[lang="bn"] .font-sans,
+html[lang="bn"] body,
+html[lang="bn"] button,
+html[lang="bn"] a,
+html[lang="bn"] p,
+html[lang="bn"] span {
+  font-family: "Charukola Round", "Charukola", sans-serif;
+}
+
+.font-bangla {
+  font-family: "Charukola Round", "Charukola", system-ui, sans-serif !important;
 }
 
 /* Custom Scroll & Text Mechanics matching Villa Aurelia */

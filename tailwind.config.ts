@@ -40,6 +40,7 @@ const config: Config = {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-fraunces)", "serif"],
         serif: ["var(--font-fraunces)", "serif"],
+        bangla: ["var(--font-bangla)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
