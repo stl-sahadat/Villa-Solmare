@@ -1,168 +1,197 @@
-# Villa Solmare — Ultra-Luxury Coastal Architectural Sanctuary
+# Villa Solmare
 
-[![Live Production](https://img.shields.io/badge/Live_Site-villa--solmare.pages.dev-2ea44f?style=for-the-badge&logo=cloudflare)](https://villa-solmare.pages.dev)
-[![GitHub](https://img.shields.io/badge/GitHub-stl--sahadat%2FVilla--Solmare-181717?style=for-the-badge&logo=github)](https://github.com/stl-sahadat/Villa-Solmare)
-[![Next.js 15](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
-[![React 19](https://img.shields.io/badge/React-19.3-blue?style=for-the-badge&logo=react)](https://react.dev)
+[![Live Production](https://img.shields.io/badge/Production-villa--solmare.pages.dev-2ea44f?style=for-the-badge&logo=cloudflare)](https://villa-solmare.pages.dev)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-stl--sahadat%2FVilla--Solmare-181717?style=for-the-badge&logo=github)](https://github.com/stl-sahadat/Villa-Solmare)
+[![Framework](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Runtime](https://img.shields.io/badge/React-19.3-blue?style=for-the-badge&logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
 
-> 🌐 **Live Cloudflare Pages Production:** [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)  
-> 🔒 **Admin Management Suite:** [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin)
+> Production URL: [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)  
+> Repository: [https://github.com/stl-sahadat/Villa-Solmare](https://github.com/stl-sahadat/Villa-Solmare)  
+> Administration Portal: [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin)
 
 ---
 
-## 1. Executive Summary
+## 1. Overview
 
-Villa Solmare is an ultra-luxury coastal stone sanctuary situated on the clifftops overlooking the Bay of Bengal near Inani Beach, Marine Drive, Cox's Bazar, Bangladesh.
+Villa Solmare is an architectural sanctuary web application inspired by coastal clifftop aesthetics above the Bay of Bengal, near Inani Beach, Cox's Bazar, Bangladesh.
 
-Engineered under the direct leadership of **Md Sahadat Hossain (Sahadat vai)** adhering strictly to the **21st.dev Design Engineering standard**, this application delivers an authentic 1:1 architectural template clone of Villa Aurelia. The system integrates Next.js 15, React 19, strict TypeScript, Tailwind CSS, Fraunces serif typography, a 64-frame multi-pass strided canvas arrival sequence, a 192-frame virtual room walkthrough, an ambient sunset loop, a dynamic bilingual localization engine (English & authentic literary Bengali with Charukola artistic typography), and an interactive administrative management suite with Cloudflare Edge runtime capabilities.
-
----
-
-## 2. Live Page Routes & Endpoints
-
-| Section / Feature | Route Path | Live URL |
-| :--- | :--- | :--- |
-| **Home (Cinematic Narrative)** | `/` | [https://villa-solmare.pages.dev/](https://villa-solmare.pages.dev/) |
-| **The House & Architecture** | `/the-house` | [https://villa-solmare.pages.dev/the-house](https://villa-solmare.pages.dev/the-house) |
-| **Inside & Virtual Walkthrough** | `/inside` | [https://villa-solmare.pages.dev/inside](https://villa-solmare.pages.dev/inside) |
-| **Amenities & Surrounding Area** | `/amenities` | [https://villa-solmare.pages.dev/amenities](https://villa-solmare.pages.dev/amenities) |
-| **Guest Reviews & Testimonials** | `/guests` | [https://villa-solmare.pages.dev/guests](https://villa-solmare.pages.dev/guests) |
-| **Plan Your Stay (Booking Engine)** | `/stay` | [https://villa-solmare.pages.dev/stay](https://villa-solmare.pages.dev/stay) |
-| **Frequently Asked Questions** | `/faq` | [https://villa-solmare.pages.dev/faq](https://villa-solmare.pages.dev/faq) |
-| **Administrative Dashboard** | `/admin` | [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin) |
-| **Privacy Notice** | `/privacy` | [https://villa-solmare.pages.dev/privacy](https://villa-solmare.pages.dev/privacy) |
+Engineered under the leadership of Md Sahadat Hossain following high-performance design engineering standards, the project features a responsive modern stack with Next.js 15, React 19, strict TypeScript, Tailwind CSS, Fraunces serif typography, and custom Charukola artistic Bengali typography. The platform incorporates multi-pass progressive canvas scrubbers, stepped virtual walkthroughs, bilingual translation mechanics, dynamic reservation fee calculation in Bangladeshi Taka (BDT), and a serverless administrative management suite deployed to Cloudflare Pages edge infrastructure.
 
 ---
 
-## 3. Key Architectural Highlights
+## 2. Key Capabilities
 
-* **Multi-Pass Strided Canvas Scrubber:** 64-frame arrival sequence loaded asynchronously via non-blocking strides ($8 \to 4 \to 2 \to 1$) with nearest-neighbor interpolation.
-* **192-Frame Virtual Room Walkthrough:** Stepped HUD tracking Living Room, Kitchen, and Master Bedroom suite with a native dialog Bento gallery.
-* **Bilingual Translation Engine (EN / বাংলা):** Seamless language switcher (`EN` / `বাংলা`) in the header and menu. Pure international luxury English by default; switches to natural, authentic, literary Bengali without robotic word-by-word artifacts.
-* **Real-Time BDT Currency Engine:** Nightly rate set at ৳85,000 BDT (Bangladeshi Taka) with live calendar calculation and zero hidden charges.
-* **Tone-Adaptive Frosted Glass Header:** Automatically alternates between high-contrast dark glass over drone footage and ivory travertine over daytime sections.
-* **Comprehensive Administrative Suite (`/admin`):** Real-time content and pricing updates with password protection (`440055`) and session cookie validation.
-* **Cloudflare Pages Global Edge Distribution:** Deployed directly to Cloudflare Pages edge network with serverless edge worker (`_worker.js`) executing API requests with sub-millisecond latency.
+### 2.1 Multi-Pass Canvas Arrival Scrubber
+* 64-frame sequence loaded asynchronously using non-blocking strided passes (8 -> 4 -> 2 -> 1).
+* Smooth wheel and touch scrub velocity with linear interpolation (LERP) easing.
+* Automatic fallback handling for constrained network environments.
+
+### 2.2 Virtual Room Walkthrough
+* 192-frame interactive walkthrough spanning Living Room, Kitchen, and Master Bedroom suites.
+* Stepped head-up display (HUD) tracking room metrics, amenities, and spatial dimensions.
+* Fullscreen bento photo gallery modal with backdrop filters and keyboard navigation.
+
+### 2.3 Bilingual Localization Engine
+* Clean header language toggle featuring an Earth vector icon.
+* Immediate switching between English and authentic literary Bengali without page reloads.
+* Specialized Charukola Round and Charukola Unicode typography rendered dynamically when Bengali is active.
+
+### 2.4 Real-Time Reservation Engine
+* Dynamic calendar calculation with check-in, checkout, and night counting.
+* Nightly rates defined in Bangladeshi Taka (BDT) with upfront transparent pricing.
+* Client-side and edge-level input validation preventing invalid date ordering or excessive guest counts.
+
+### 2.5 Administrative Management Suite
+* Dedicated administrative portal accessible via `/admin`.
+* Secure cookie-based authentication with cryptographic session cookies.
+* Live customization of property rates, guest limits, seasonal pricing, and contact records.
 
 ---
 
-## 4. Technical Documentation Index
+## 3. Technology Stack
 
-Detailed architectural and operational specifications are maintained across dedicated documentation files:
-
-* [AI Developer Guide](docs/AI_DEVELOPER_GUIDE.md): Principal stakeholder profile, communication boundaries, operational workflows, and repository mapping.
-* [System Architecture](docs/ARCHITECTURE.md): Subsystems, canvas rendering mechanics, LERP inertia easing, tone-sensing header, and tech matrix.
-* [Database & Schemas](docs/DATABASE_SCHEMA.md): JSON persistence layer, domain schemas, booking validation structures, and mutation lifecycles.
-* [Deployment Guide](docs/DEPLOYMENT_GUIDE.md): Production builds, Cloudflare Pages edge distribution, and caching rules.
-* [Security Specifications](docs/SECURITY_SPECS.md): Authentication models, HttpOnly cookie lifecycle, input boundary validation, and privacy governance.
+| Layer | Technologies |
+| :--- | :--- |
+| Framework | Next.js 15 (App Router, Server Components, API Handlers) |
+| Core Library | React 19 |
+| Language | TypeScript 5.6 (Strict Type Checking) |
+| Styling | Tailwind CSS 3.4, PostCSS, Custom CSS Variables |
+| Animation & Interaction | Framer Motion, Canvas 2D API, Custom Easing Physics |
+| Typography | Fraunces Serif, Geist Sans, Charukola Round, Charukola Unicode |
+| Edge Infrastructure | Cloudflare Pages, Cloudflare Edge Workers (`_worker.js`) |
+| Version Control | Git, GitHub |
 
 ---
 
-## 5. Repository Directory Tree
+## 4. Repository Structure
 
 ```
 Villa Solmare/
-|-- README.md
-|-- docs/
-|   |-- AI_DEVELOPER_GUIDE.md
-|   |-- ARCHITECTURE.md
-|   |-- DATABASE_SCHEMA.md
-|   |-- DEPLOYMENT_GUIDE.md
-|   `-- SECURITY_SPECS.md
-|-- public/
-|   |-- favicon.ico
-|   |-- fonts/
-|   |   |-- fraunces.woff2
-|   |   |-- fraunces-italic.woff2
-|   |   `-- geist.woff2
-|   |-- media/
-|   |   |-- arrival/            # 64 frames (d1920 & mobile)
-|   |   |-- walk/               # 192 walkthrough frames (d1920 & mobile)
-|   |   |-- sunset/             # desktop.mp4 & mobile.mp4
-|   |   `-- photos/             # Architectural stills
-|   `-- og.jpg
+|-- .env.example              # Template for environment variables
+|-- .gitignore                # Git ignore configuration
+|-- README.md                 # Primary documentation
+|-- docs/                     # Technical architecture specifications
+|   |-- AI_DEVELOPER_GUIDE.md # Workflow and developer instructions
+|   |-- ARCHITECTURE.md       # Deep architectural breakdown
+|   |-- DATABASE_SCHEMA.md    # Configuration data structures
+|   |-- DEPLOYMENT_GUIDE.md   # Deployment pipeline procedures
+|   `-- SECURITY_SPECS.md     # Security and governance rules
+|-- public/                   # Static production assets
+|   |-- favicon.ico           # Application favicon
+|   |-- fonts/                # Self-hosted web fonts
+|   |-- media/                # Arrival frames, walkthrough frames, video loops
+|   `-- og.jpg                # OpenGraph preview asset
 |-- scripts/
-|   `-- build_cloudflare.js     # Cloudflare Pages edge distributor & packager
+|   `-- build_cloudflare.js   # Cloudflare Pages build and packaging pipeline
 |-- src/
 |   |-- app/
-|   |   |-- [section]/          # Next.js 15 dynamic scroller (async params)
-|   |   |-- admin/              # Management suite (/admin)
-|   |   |-- amenities/          # Dedicated Amenities page (/amenities)
-|   |   |-- api/
-|   |   |   |-- admin/auth/     # Session authentication handler
-|   |   |   |-- admin/config/   # Administrative JSON config updater
-|   |   |   |-- booking/        # Live reservation and quote handler
-|   |   |   `-- config/         # Public configuration endpoint
-|   |   |-- faq/                # Dedicated FAQ page (/faq)
-|   |   |-- globals.css         # Design tokens and custom easing curves
-|   |   |-- guests/             # Dedicated Guest Reviews page (/guests)
-|   |   |-- inside/             # Dedicated Virtual Walkthrough page (/inside)
-|   |   |-- layout.tsx          # Root layout, language provider & Schema.org metadata
-|   |   |-- page.tsx            # Cinematic single-page orchestrator
-|   |   |-- privacy/            # Privacy notice (/privacy)
-|   |   |-- stay/               # Dedicated Booking Engine page (/stay)
-|   |   `-- the-house/          # Dedicated Architectural House page (/the-house)
-|   |-- components/             # Modular architectural components
-|   |-- config/                 # solmare.config.ts (Strict domain schema)
-|   |-- context/                # LanguageContext.tsx (Bilingual EN/BN reactive state)
-|   |-- data/                   # site-config.json & translations.ts
-|   |-- lib/                    # Class merge & BDT currency utilities
-|   `-- types/                  # Strict TypeScript domain interfaces
-|-- next.config.mjs
-|-- package.json
-|-- postcss.config.js
-|-- tailwind.config.ts
-`-- tsconfig.json
+|   |   |-- [section]/        # Dynamic route scroller
+|   |   |-- admin/            # Administrative management dashboard
+|   |   |-- amenities/        # Amenities page
+|   |   |-- api/              # Serverless API routes (auth, booking, config)
+|   |   |-- faq/              # Frequently asked questions page
+|   |   |-- globals.css       # Design tokens, keyframes, and font imports
+|   |   |-- guests/           # Reviews and testimonials page
+|   |   |-- inside/           # Walkthrough page
+|   |   |-- layout.tsx        # Root HTML layout and metadata
+|   |   |-- page.tsx          # Main interactive landing page
+|   |   |-- privacy/          # Privacy policy page
+|   |   |-- stay/             # Booking and reservation page
+|   |   `-- the-house/        # Architecture overview page
+|   |-- components/           # Reusable UI components
+|   |-- config/               # Application configuration and initial state
+|   |-- context/              # LanguageContext for stateful localization
+|   |-- data/                 # Translations and static fallback datasets
+|   |-- lib/                  # Utility functions and class mergers
+|   `-- types/                # TypeScript interface declarations
+|-- next.config.mjs           # Next.js runtime configuration
+|-- package.json              # Project dependencies and script commands
+|-- tailwind.config.ts        # Tailwind theme and font definitions
+`-- tsconfig.json             # TypeScript configuration
 ```
 
 ---
 
-## 6. Quick Start & Deployment
+## 5. Getting Started
 
-### 6.1 Prerequisites
+### 5.1 System Prerequisites
 * Node.js: Version 20.x or 24.x LTS
 * Package Manager: npm 10.x or higher
 
-### 6.2 Installation
+### 5.2 Local Setup
+1. Clone the repository:
+```bash
+git clone https://github.com/stl-sahadat/Villa-Solmare.git
+cd Villa-Solmare
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### 6.3 Local Development
+3. Setup environment variables:
+```bash
+cp .env.example .env.local
+```
+Update `.env.local` with your designated local configuration parameters.
+
+4. Start development server:
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
-### 6.4 Cloudflare Pages Deployment
-To build and deploy directly to the live Cloudflare Pages production environment:
+---
+
+## 6. Build and Deployment
+
+### 6.1 Production Build
+Generate an optimized production build locally:
+```bash
+npm run build
+```
+
+### 6.2 Cloudflare Pages Edge Deployment
+Package and deploy the production bundle directly to Cloudflare Pages:
 ```bash
 npm run deploy:cf
 ```
-This script executes:
-1. `next build` static export generation
-2. Packaging of clean HTML routing and asset hashes
-3. Edge Worker bundle assembly (`pages-dist/_worker.js`)
-4. Direct atomic deployment to Cloudflare Pages (`villa-solmare.pages.dev`)
+The packaging script executes:
+1. Compilation of static routes and assets.
+2. Generation of cache headers (`_headers`) and API routing rules (`_routes.json`).
+3. Assembly of the edge handler (`pages-dist/_worker.js`).
+4. Direct publication to Cloudflare Pages.
 
 ---
 
-## 7. Administrative Credentials
+## 7. Security and Governance
 
-The administrative dashboard is available at `/admin`:
-* **Live URL:** [https://villa-solmare.pages.dev/admin](https://villa-solmare.pages.dev/admin)
-* **Local URL:** [http://localhost:3000/admin](http://localhost:3000/admin)
-* **Username:** `admin`
-* **Password:** `440055`
+* **Zero Credentials in Version Control:** Passwords, API tokens, and secret identifiers must never be committed to repository history.
+* **Environment Variable Governance:** Administrative credentials and deployment parameters are managed exclusively through environment variables and Cloudflare dashboard secrets.
+* **HTTP-Only Session Management:** Authentication cookies are marked with `HttpOnly`, `SameSite=Lax`, and `Secure` attributes to mitigate cross-site scripting risks.
+* **Input Boundary Sanitization:** Serverless endpoints validate email formats, date sequences, and numerical guest boundaries.
+
+For comprehensive security specifications, consult [docs/SECURITY_SPECS.md](docs/SECURITY_SPECS.md).
 
 ---
 
-## 8. Ownership & Credits
+## 8. Dedicated Documentation Index
 
-* **Architectural Conception & Ownership:** Md Sahadat Hossain (Sahadat vai)
-* **Live Production:** [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)
+Detailed architectural and procedural documents are maintained in the `docs` directory:
+* [Architecture Blueprint](docs/ARCHITECTURE.md) - Subsystems, rendering mechanics, and component hierarchy.
+* [Developer Guide](docs/AI_DEVELOPER_GUIDE.md) - Workflows, coding conventions, and developer guidelines.
+* [Database & Schemas](docs/DATABASE_SCHEMA.md) - Schema structures, models, and data flow.
+* [Deployment Guide](docs/DEPLOYMENT_GUIDE.md) - Production environment configurations and edge caching.
+* [Security Specifications](docs/SECURITY_SPECS.md) - Authentication, cookie rules, and data governance.
+
+---
+
+## 9. Project Ownership & Credits
+
+* **Conception and Architectural Direction:** Md Sahadat Hossain
+* **Production Live URL:** [https://villa-solmare.pages.dev](https://villa-solmare.pages.dev)
 * **GitHub Repository:** [https://github.com/stl-sahadat/Villa-Solmare](https://github.com/stl-sahadat/Villa-Solmare)
-* **Location:** Barura, Comilla / Inani Beach, Cox's Bazar, Bangladesh
-* **Instagram:** [@stlsahadat](https://www.instagram.com/stlsahadat/)
-* **Engineering Standard:** 21st.dev Design Engineer
+* **Property Setting:** Inani Beach, Cox's Bazar / Barura, Comilla, Bangladesh
+* **Engineering Standards:** 21st.dev Design Engineering Standards

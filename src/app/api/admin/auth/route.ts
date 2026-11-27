@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import type { AdminLoginRequest, AdminLoginResponse } from "@/types";
 
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "440055";
+const ADMIN_USER = process.env.ADMIN_USERNAME || "admin";
+const ADMIN_PASS = process.env.ADMIN_PASSWORD || "440055";
 const SESSION_COOKIE_NAME = "solmare_admin_session";
 const SESSION_TOKEN = "solmare_authenticated_session_token_xyz987";
 

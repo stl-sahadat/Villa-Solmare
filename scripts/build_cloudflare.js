@@ -92,8 +92,8 @@ console.log('✓ Generated _routes.json (Worker strictly for /api/*)');
 
 // 8. Generate _worker.js Edge handler for Cloudflare Pages (API handling only)
 const workerCode = `// Cloudflare Pages Edge Worker for Villa Solmare API
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "440055";
+const ADMIN_USER = typeof env !== "undefined" && env.ADMIN_USERNAME ? env.ADMIN_USERNAME : "admin";
+const ADMIN_PASS = typeof env !== "undefined" && env.ADMIN_PASSWORD ? env.ADMIN_PASSWORD : "440055";
 const SESSION_COOKIE_NAME = "solmare_admin_session";
 const SESSION_TOKEN = "solmare_authenticated_session_token_xyz987";
 
